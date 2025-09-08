@@ -6,17 +6,23 @@
   --background: #f8f9fa;
   --card-bg: #ffffff;
   --text: #333333;
-  --text-light: #666666;
   --border-radius: 8px;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --transition: all 0.2s ease-in-out;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Base Styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Base Styles */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -24,83 +30,35 @@ body {
   background-color: var(--background);
   color: var(--text);
   line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* App Container */
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .app {
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  margin: 0 auto;
 }
 
-/* Card Styling */
+/* Card */
 .card {
-  width: 100%;
-  padding: 3rem 2rem;
+  background: var(--card-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  background-color: var(--card-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  padding: 2.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 /* Typography */
 h1 {
   color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-/* Buttons */
-button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.8rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  display: inline-block;
-  text-align: center;
-}
-
-button:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-1px);
-}
-
-button:active {
-  background-color: var(--primary-active);
-  transform: translateY(0);
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
 }
 
 /* Auth Status */
@@ -110,133 +68,80 @@ button:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin: 0;
-  padding: 1.5rem;
-}
-
-.auth-status > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 1.5rem;
 }
 
 .auth-status p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0;
   color: var(--text);
-  width: 100%;
-  text-align: center;
-  padding: 0 1rem;
 }
 
-/* Button Styling */
+/* Button */
 button {
-  background-color: var(--primary-color);
+  background: var(--primary-color);
   color: white;
   border: none;
+  border-radius: var(--border-radius);
   padding: 0.8rem 2rem;
   font-size: 1rem;
   font-weight: 500;
-  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.2s ease;
   min-width: 160px;
   margin: 0.5rem 0;
 }
 
 button:hover {
-  background-color: var(--primary-hover);
+  background: var(--primary-hover);
   transform: translateY(-1px);
 }
 
 /* Token Info */
 .token-info {
-  width: 100%;
-  padding: 1rem;
-  background-color: #f8f9fa;
+  background: #f1f3f5;
   border-radius: var(--border-radius);
-  border-left: 4px solid var(--primary-color);
-  margin: 1rem 0 0;
-  text-align: left;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  width: 100%;
   word-break: break-all;
-  box-sizing: border-box;
 }
 
 .token-info h4 {
-  margin: 0 0 0.5rem 0;
   color: var(--primary-color);
-  text-align: center;
   font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Ensure all elements are centered */
-* {
-  box-sizing: border-box;
-}
-
-body, html, #root, .app {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-/* Token Info */
-.token-info {
-  margin: 2rem auto 0;
-  padding: 1.25rem;
-  background-color: #f8f9fa;
-  border-radius: var(--border-radius);
-  border-left: 4px solid var(--primary-color);
-  word-break: break-all;
-  text-align: center;
-  max-width: 100%;
-}
-
-.token-info h4 {
-  margin: 0 auto 0.75rem;
-  color: var(--primary-color);
-  font-size: 0.95rem;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-align: center;
-  width: fit-content;
+  margin-bottom: 0.5rem;
 }
 
 /* Code */
 code {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  background-color: #f0f2f5;
+  font-family: 'Courier New', monospace;
+  background: #e9ecef;
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: #e83e8c;
-  word-break: break-word;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 600px) {
   .app {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
   
   .card {
     padding: 2rem 1.5rem;
-    margin: 1rem 0;
   }
   
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
   
   button {
     width: 100%;
-    padding: 0.9rem;
+    padding: 1rem;
   }
 }

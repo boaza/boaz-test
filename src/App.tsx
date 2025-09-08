@@ -18,16 +18,14 @@ const AuthStatus = () => {
 
   return (
     <div className="auth-status">
-      <div>
-        <p>Welcome, {user?.name || 'User'}!</p>
-        <button onClick={logout}>Logout</button>
-        {token && (
-          <div className="token-info">
-            <h4>Access Token (first 30 chars):</h4>
-            <code>{token.substring(0, 30)}...</code>
-          </div>
-        )}
-      </div>
+      <p>Welcome, {user?.name || 'User'}!</p>
+      <button onClick={logout}>Logout</button>
+      {token && (
+        <div className="token-info">
+          <h4>Access Token (first 30 chars):</h4>
+          <code>{token.substring(0, 30)}...</code>
+        </div>
+      )}
     </div>
   );
 };
@@ -36,8 +34,8 @@ function App() {
   return (
     <AuthProvider>
       <div className="app">
-        <h1>Boaz test app</h1>
         <div className="card">
+          <h1>Boaz test app</h1>
           <AuthTemplate>
             <AuthStatus />
           </AuthTemplate>
