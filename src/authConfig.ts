@@ -2,14 +2,16 @@ import type { Configuration, RedirectRequest } from '@azure/msal-browser';
 import { LogLevel } from '@azure/msal-browser';
 
 // Azure AD B2C configuration
+const TENANT_ID = '35102502-39ba-44ac-acc4-c185e0bf9285';
+
 export const msalConfig: Configuration = {
     auth: {
-        clientId: 'YOUR_CLIENT_ID', // Replace with your Azure AD B2C Application ID
-        authority: 'https://YOUR_TENANT_NAME.b2clogin.com/YOUR_TENANT_NAME.onmicrosoft.com/YOUR_SIGN_IN_POLICY', // Replace with your tenant info
-        knownAuthorities: ['YOUR_TENANT_NAME.b2clogin.com'], // Replace with your tenant name
+        clientId: '5731266e-9e3d-4525-90bf-48ba980c967b', // Replace with your Azure AD B2C Application ID
+        authority: `https://login.microsoftonline.com/${TENANT_ID}`, // Replace with your tenant info
+        knownAuthorities: ['login.microsoftonline.com'], // Replace with your tenant name
         redirectUri: 'http://localhost:5173', // Update with your app's redirect URI
         postLogoutRedirectUri: 'http://localhost:5173', // Update with your app's post-logout redirect URI
-        navigateToLoginRequestUrl: false,
+        navigateToLoginRequestUrl: false
     },
     cache: {
         cacheLocation: 'sessionStorage', // This configures where your cache will be stored
