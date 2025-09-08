@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { AuthProvider, useAuth } from './auth/authContext';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+// This component demonstrates authentication usage
+const AuthStatus = () => {
+  const { isAuthenticated, user, login, logout, getAccessToken } = useAuth();
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      if (isAuthenticated) {
+        const accessToken = await getAccessToken();
+        setToken(accessToken);
+      }
+    };
+    fetchToken();
+  }, [isAuthenticated, getAccessToken]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="auth-status">
+      {isAuthenticated ? (
+        <div>
+          <p>Welcome, {user?.name || 'User'}!</p>
+          <button onClick={logout}>Logout</button>
+          {token && (
+            <div className="token-info">
+              <h4>Access Token (first 30 chars):</h4>
+              <code>{token.substring(0, 30)}...</code>
+            </div>
+          )}
+        </div>
+      ) : (
+        <button onClick={login}>Login with Microsoft</button>
+      )}
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <AuthProvider>
+      <div className="app">
+        <h1>Azure AD B2C Authentication</h1>
+        <div className="card">
+          <AuthStatus />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
