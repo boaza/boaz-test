@@ -36,7 +36,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="app">
-        <h1>Azure AD B2C Authentication</h1>
+        <h1>Boaz test app</h1>
         <div className="card">
           <AuthTemplate>
             <AuthStatus />

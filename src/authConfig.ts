@@ -9,10 +9,10 @@ export const msalConfig: Configuration = {
         clientId: '5731266e-9e3d-4525-90bf-48ba980c967b', // Replace with your Azure AD B2C Application ID
         authority: `https://login.microsoftonline.com/${TENANT_ID}`, // Replace with your tenant info
         knownAuthorities: ['login.microsoftonline.com'], // Replace with your tenant name
-        redirectUri: process.env.NODE_ENV === 'development' ? 
+        redirectUri: import.meta.env.MODE === 'development' ? 
             'http://localhost:5173' : 
             'https://boaz-test.azurewebsites.net', // Update with your app's redirect URI
-        postLogoutRedirectUri: 'https://boaz-test.azurewebsites.net', // Update with your app's post-logout redirect URI
+        //postLogoutRedirectUri: 'https://boaz-test.azurewebsites.net', // Update with your app's post-logout redirect URI
         navigateToLoginRequestUrl: false
     },
     cache: {
