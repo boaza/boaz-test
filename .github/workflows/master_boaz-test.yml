@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: '22'
 
       - name: npm install, build, and test
         run: |
@@ -52,4 +52,5 @@ jobs:
           app-name: 'boaz-test'
           slot-name: 'Production'
           package: .
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40EEB41716034916B7CDEBD76BCD39F8 }}
