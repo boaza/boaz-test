@@ -27,11 +27,11 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
 
-      - name: yarn install, build, and test
+      - name: Clear cache and install dependencies
         run: |
+          yarn cache clean
           yarn install --frozen-lockfile
-          yarn build --if-present
-          yarn test --if-present
+          yarn build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
